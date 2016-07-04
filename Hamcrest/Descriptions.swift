@@ -7,7 +7,7 @@ func describe<T>(value: T) -> String {
     if let string = value as? String {
         return "\"\(string)\""
     }
-    return String(value)
+    return (value as? CustomDebugStringConvertible)?.debugDescription ?? String(value)
 }
 
 func describeAddress<T: AnyObject>(object: T) -> String {
