@@ -7,7 +7,7 @@ func describe<T>(_ value: T) -> String {
     if let string = value as? String {
         return "\"\(string)\""
     }
-    return (value as? CustomDebugStringConvertible)?.debugDescription ?? String(describing: value)
+    return String(describing: value)
 }
 
 func describeAddress<T: AnyObject>(_ object: T) -> String {
@@ -30,7 +30,7 @@ func describeErrorMismatch<T>(_ error: T, _ description: String, _ mismatchDescr
     return "GOT ERROR: " + describeActualValue(error, mismatchDescription) + ", EXPECTED ERROR: \(description)"
 }
 
-func describeMismatch<T>(_ value: T, _ description: String, _ mismatchDescription: String?) -> String {
+public func describeMismatch<T>(_ value: T, _ description: String, _ mismatchDescription: String?) -> String {
     return "GOT: " + describeActualValue(value, mismatchDescription) + ", EXPECTED: \(description)"
 }
 
@@ -49,7 +49,7 @@ func joinDescriptions(_ descriptions: [String?]) -> String? {
 
 func joinMatcherDescriptions<S: Sequence, T>(_ matchers: S, prefix: String = "all of") -> String where S.Iterator.Element == Matcher<T> {
     var generator = matchers.makeIterator()
-    if let first = generator.next() , generator.next() == nil {
+    if let first = generator.next(), generator.next() == nil {
         return first.description
     } else {
         return prefix + " " + joinDescriptions(matchers.map({$0.description}))

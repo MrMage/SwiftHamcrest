@@ -26,7 +26,7 @@ public func hasProperty<T, U>(_ propertyName: String, _ matcher: Matcher<U>) -> 
 private func getProperty<T>(_ value: T, keyMatcher: Matcher<String>) -> Any? {
     let mirror = Mirror(reflecting: value)
     for property in mirror.children {
-        if let label = property.label , keyMatcher.matches(label).boolValue {
+        if let label = property.label, keyMatcher.matches(label).boolValue {
             return property.value
         }
     }

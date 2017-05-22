@@ -62,7 +62,7 @@ class MatchResultTests: XCTestCase {
         let matchResult = MatchResult(false, "description")
 
         switch matchResult {
-        case let .Mismatch(mismatchDescription) where mismatchDescription != nil:
+        case let .mismatch(mismatchDescription) where mismatchDescription != nil:
             XCTAssertEqual(mismatchDescription!, "description")
         default:
             XCTFail()

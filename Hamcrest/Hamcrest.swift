@@ -40,7 +40,7 @@ func isPlayground() -> Bool {
 
 @discardableResult public func assertThrows<T>(_ value: @autoclosure () throws -> T, file: StaticString = #file, line: UInt = #line) -> String {
     do {
-        try value()
+        _ = try value()
         return reportResult(describeExpectedError(), file: file, line: line)
     } catch {
         return reportResult(nil, file: file, line: line)
@@ -55,9 +55,9 @@ func isPlayground() -> Bool {
     return reportResult(applyErrorMatcher(matcher, toBlock: value))
 }
 
-private func applyErrorMatcher<S, T: Error>(_ matcher: Matcher<T>, toBlock: () throws -> S) -> String? {
+@discardableResult private func applyErrorMatcher<S, T: Error>(_ matcher: Matcher<T>, toBlock: () throws -> S) -> String? {
     do {
-        try toBlock()
+        _ = try toBlock()
         return describeExpectedError(matcher.description)
     } catch let error as T {
         let match = matcher.matches(error)
@@ -78,7 +78,7 @@ private func applyErrorMatcher<S, T: Error>(_ matcher: Matcher<T>, toBlock: () t
     return reportResult(applyMatcher(matcher, toValue: value), file: file, line: line)
 }
 
-func applyMatcher<T>(_ matcher: Matcher<T>, toValue: () throws -> T) -> String? {
+@discardableResult func applyMatcher<T>(_ matcher: Matcher<T>, toValue: () throws -> T) -> String? {
     do {
         let value = try toValue()
         let match = matcher.matches(value)

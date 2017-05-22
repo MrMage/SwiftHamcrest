@@ -1,11 +1,8 @@
 language: objective-c
-osx_image: xcode8
-sudo: false
-
-before_install:
-  - gem install --no-document cocoapods xcpretty
+osx_image: xcode8.3
 
 script:
-  - set -o pipefail; xcodebuild -workspace *.xcworkspace -scheme "Hamcrest OSX" build test | xcpretty -c
-  - set -o pipefail; xcodebuild -workspace *.xcworkspace -scheme "Hamcrest iOS" -sdk iphonesimulator -destination "platform=iOS Simulator,OS=latest,name=iPhone 7" build test | xcpretty -c
-  - pod lib lint
+  - set -o pipefail;
+  - xcodebuild -workspace *.xcworkspace -scheme "Hamcrest-macOS" build test | xcpretty -c
+  - xcodebuild -workspace *.xcworkspace -scheme "Hamcrest-iOS" -sdk iphonesimulator -destination "platform=iOS Simulator,OS=latest,name=iPhone 5s" build test | xcpretty -c
+  - pod lib lint SwiftHamcrest.podspec

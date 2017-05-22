@@ -17,8 +17,7 @@ public func hasCount<T: Collection>(_ expectedCount: T.IndexDistance) -> Matcher
 }
 
 public func everyItem<T, S: Sequence>(_ matcher: Matcher<T>)
-    -> Matcher<S> where T == S.Iterator.Element {
-
+    -> Matcher<S> where S.Iterator.Element == T {
     return Matcher("a sequence where every item \(matcher.description)") {
         (values: S) -> MatchResult in
         var mismatchDescriptions: [String?] = []

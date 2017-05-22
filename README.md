@@ -5,7 +5,7 @@ Hamcrest gives you advanced matchers with better error messages for your Swift u
 
 Hamcrest was originally written in Java and is available for many [languages](http://hamcrest.org).
 
-![Swift 2.2](https://img.shields.io/badge/Swift-2.2-lightgrey.svg)
+![Swift 3.0](https://img.shields.io/badge/Swift-3.0-lightgrey.svg)
 ![OS X ≥ 10.9](https://img.shields.io/badge/OS%20X-≥%2010.9-lightgrey.svg)
 ![iOS ≥ 7.0](https://img.shields.io/badge/iOS%20-≥%207.0-lightgrey.svg)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
@@ -108,7 +108,7 @@ assertThat("foobarbaz", hasSuffix("ba"))
 // GOT: "foobarbaz", EXPECTED: has suffix "ba"
 
 assertThat("ac", matchesPattern("\\b(a|b)(c|d)\\b")) // ✓
-assertThat("BD", matchesPattern("\\b(a|b)(c|d)\\b", options: .CaseInsensitive)) // ✓
+assertThat("BD", matchesPattern("\\b(a|b)(c|d)\\b", options: .caseInsensitive)) // ✓
 assertThat("aC", matchesPattern("\\b(a|b)(c|d)\\b"))
 // "GOT: "aC", EXPECTED: matches \b(a|b)(c|d)\b"
 
@@ -231,8 +231,8 @@ The following matchers can be used to assert types. References of type Any need 
 
 ```swift
 class TestChild: Test {}
-assertThat(o, instanceOf(Test)) // ✓
-assertThat(o, instanceOf(TestChild))
+assertThat(o, instanceOf(Test.self)) // ✓
+assertThat(o, instanceOf(TestChild.self))
 // GOT: __lldb_expr_60.Test, EXPECTED: instance of expected type
 
 let any: Any = 10
@@ -309,7 +309,7 @@ assertThat(489359, isDivisibleByThree())
 If the function you're testing can throw errors, Hamcrest will report those errors.
 
 ```swift
-private enum SampleError: ErrorType {
+private enum SampleError: Error {
     case Error1
     case Error2
 }
@@ -346,7 +346,7 @@ Integrate SwiftHamcrest using a Podfile similar to this:
 use_frameworks!
 
 target 'HamcrestDemoTests', :exclusive => true do
-  pod 'SwiftHamcrest', '~> 0.4'
+  pod 'SwiftHamcrest', '~> 1.0.0'
 end
 ```
 
