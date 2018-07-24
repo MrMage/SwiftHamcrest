@@ -1,3 +1,13 @@
+Version 2.1.0 (TBA)
+
+- Migrate to Swift 4.1 and Xcode 9.3
+
+Version 2.0.0
+-------------
+_31 Jan 2018_
+
+- Migrate to Swift 4.0
+
 Version 1.0.0
 -------------
 _19 Feb 2017_
