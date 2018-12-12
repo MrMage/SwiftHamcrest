@@ -355,7 +355,7 @@
 					};
 					2496DAF019922407008C270E = {
 						CreatedOnToolsVersion = 6.0;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 1010;
 					};
 					2496DAFB19922407008C270E = {
 						CreatedOnToolsVersion = 6.0;
