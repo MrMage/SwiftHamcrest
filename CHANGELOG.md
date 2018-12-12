@@ -1,6 +1,8 @@
-Version 2.1.0 (TBA)
+Version 2.1.0
+------------
+_TBA_
 
-- Migrate to Swift 4.1 and Xcode 9.3
+- Migrated to Swift 4.2 and Xcode 10
 
 Version 2.0.0
 -------------
